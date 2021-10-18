@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GME Report</title>
+    <style>
+      .iframe {
+        height: 100vh;
+        width: 100%;
+        border-width: 0px;
+      }
+
+      #header {
+        margin: 2em 2em 2em 2em;
+      }
+
+      body {
+        background-color: lightgray;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .black-txt {
+        color: black;
+      }
+
+      .yellow-txt {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h1>$GME Report</h1>
+      <h2><a href="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf">Link to official report</a><small> (also embedded below)</small></h2>
+      <h1 id="drs-your-shares">DRS YOUR SHARES</h1>
+      <p class="hidden">HEDGIES R FUK</p>
+    </div>
+    <iframe class="iframe" src="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf"></iframe>
+    <script>
+      const drsEl = document.getElementById("drs-your-shares");
+      const colors = ["black-txt", "yellow-txt"];
+      const stop = 10;
+      let i = 0;
+      const interval = setInterval(() => {
+        i++;
+        drsEl.classList.forEach((c) => drsEl.classList.remove(c));
+        drsEl.classList.add(colors[i % colors.length]);
+        if (i === stop) {
+          clearInterval(interval);
+        }
+      }, 500);
+    </script>
+  </body>
+</html>
