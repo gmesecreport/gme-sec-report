@@ -16,46 +16,98 @@
         margin: 2em 2em 2em 2em;
       }
 
+      #header > header > h1 {
+        display: inline-block;
+        margin: 2em 0 0 0;
+      }
+
+      header span {
+        margin-left: 10px;
+      }
+
       body {
-        background-color: lightgray;
+        background-color: black;
+        color: #93186c;
+        text-align: center;
       }
 
       .hidden {
         display: none;
       }
 
-      .black-txt {
+      .primary-txt {
         color: black;
       }
 
-      .yellow-txt {
-        color: yellow;
+      .secondary-txt {
+        color: #93186c;
+      }
+
+      small {
+        font-size: 10px;
+      }
+
+      .li {
+        display: inline-block;
+        margin: 3px;
+      }
+
+      .li > a:hover {
+        color: #93186c; 
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      .container ul {
+        display: inline-block;
+        margin: 10px 0;
+        padding: 2px;
+      }
+
+      .container li {
+        display: inline-block;
+      }
+
+      .container li a {
+        display: inline-block;
+        background: #444;
+        color: #fff;
+        padding: 5px;
+        text-decoration: none;
       }
     </style>
   </head>
   <body>
-    <div id="header">
-      <h1>$GME Report</h1>
-      <h2><a href="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf">Link to official report</a><small> (also embedded below)</small></h2>
-      <h2><a href="https://www.sec.gov/news/press-release/2021-212">Link to SEC press release</a></h2>
-      <h1 id="drs-your-shares">DRS <b>*YOUR*</b> SHARES</h1>
-      <p><small>this is not financial advice</small></p>
+    <div id="header" class="container">
+      <h1 style="font-size: 38px;">SEC Report on <a href="https://gamestop.com">$GME</a></h1>
+      <ul>
+        <li>
+          <h3 class="li"><a href="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf">Official SEC Report</a></h3>
+        </li>
+        <li>
+          <h3 class="li"><a href="https://www.sec.gov/news/press-release/2021-212">Official SEC Press Release</a></h3>
+        </li>
+      </ul>
+      <header id="drs-header">
+        <h1 id="drs">DRS <b>*YOUR*</b> SHARES</h1>
+        <span><sup>*not financial advice</sup></span>
+      </header>
       <p class="hidden">HEDGIES R FUK</p>
     </div>
-    <small>*Embedded .pdf not shown on mobile</small>
+    <small><b>*embedded .pdf not shown on mobile</b></small>
     <iframe class="iframe" src="https://www.sec.gov/files/staff-report-equity-options-market-struction-conditions-early-2021.pdf"></iframe>
     <script>
-      const drsEl = document.getElementById("drs-your-shares");
-      const colors = ["black-txt", "yellow-txt"];
-      const stop = 10;
       let i = 0;
+      const el = document.getElementById("drs"),
+        colors = ["primary-txt", "secondary-txt"],
+        stop = 11;
       const interval = setInterval(() => {
         i++;
-        drsEl.classList.forEach((c) => drsEl.classList.remove(c));
-        drsEl.classList.add(colors[i % colors.length]);
-        if (i === stop) {
-          clearInterval(interval);
-        }
+        el.classList.forEach((c) => el.classList.remove(c));
+        el.classList.add(colors[i % colors.length]);
+        if (i === stop) clearInterval(interval);
       }, 500);
     </script>
   </body>
